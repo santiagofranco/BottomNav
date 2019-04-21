@@ -20,6 +20,14 @@ open class BottomNavViewController: UIViewController {
         CGRect(x: 0, y: 0, width: self.view.bounds.width - 20, height: 64)
     }()
     
+    public init() {
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    public required init?(coder aDecoder: NSCoder) {
+        fatalError("init?(coder aDecoder: NSCoder) not implemented")
+    }
+    
     override open func viewDidLoad() {
         super.viewDidLoad()
         
@@ -31,6 +39,7 @@ open class BottomNavViewController: UIViewController {
         let bottomNav = BottomNav(frame: bottomNavFrame, model: makeModel())
         bottomNav.delegate = self
         self.view.addSubview(bottomNav)
+        
         putConstraints(to: bottomNav)
     }
     
@@ -45,14 +54,16 @@ open class BottomNavViewController: UIViewController {
     }
     
     fileprivate func putConstraints(to bottomNav: BottomNav) {
-        bottomNav.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: self.view.safeAreaInsets.bottom + 20)
-        bottomNav.heightAnchor.constraint(equalToConstant: 64)
-        bottomNav.widthAnchor.constraint(equalToConstant: self.view.bounds.width - 40)
-        bottomNav.centerXAnchor.constraint(equalTo: self.view.centerXAnchor, constant: 0)
+        bottomNav.translatesAutoresizingMaskIntoConstraints = false
+        bottomNav.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant:0).isActive = true
+        bottomNav.heightAnchor.constraint(equalToConstant: 64).isActive = true
+        bottomNav.widthAnchor.constraint(equalToConstant: self.view.bounds.width - 40).isActive = true
+        bottomNav.centerXAnchor.constraint(equalTo: self.view.centerXAnchor, constant: 0).isActive = true
     }
     
     fileprivate func showViewController(at index: Int) {
-        guard let viewController = viewControllers[safe: index] else {
+        guard let viewController = viewControllers[safe: index],
+            viewController != self.currentViewController else {
             return
         }
         
@@ -61,6 +72,7 @@ open class BottomNavViewController: UIViewController {
     }
 
     fileprivate func removeCurrentViewController() {
+        currentViewController?.view.removeFromSuperview()
         currentViewController?.removeFromParent()
     }
     
@@ -68,7 +80,7 @@ open class BottomNavViewController: UIViewController {
         addChild(vc)
         vc.didMove(toParent: self)
         self.currentViewController = vc
-        self.view = vc.view
+        self.view.insertSubview(vc.view, at: 0)
         self.loadViewIfNeeded()
     }
 

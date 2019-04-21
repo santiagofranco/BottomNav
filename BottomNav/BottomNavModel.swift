@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-public struct BottomNavModel {
+internal struct BottomNavModel {
     
     internal var icons: [UIImage] = []
     internal var titles: [String] = []

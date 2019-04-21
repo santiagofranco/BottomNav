@@ -13,10 +13,9 @@ internal protocol BottomNavDelegate: class {
     func didTapItem(at index: Int)
 }
 
-open class BottomNav: UIView {
+internal class BottomNav: UIView {
     
-    @IBOutlet weak var stackView: UIStackView!
-    
+    let stackView: UIStackView = UIStackView()
     let model: BottomNavModel
     
     var mainColor: UIColor = .black
@@ -24,24 +23,31 @@ open class BottomNav: UIView {
     
     fileprivate var items: [ItemView] = []
     
-    internal lazy var itemViewFrame: CGRect = {
-        CGRect(x: 0, y: 0, width: 0, height: self.bounds.height)
-    }()
     
     init(frame: CGRect, model: BottomNavModel) {
         self.model = model
         super.init(frame: frame)
-    }
-    
-    open override func awakeFromNib() {
-        update(model: self.model)
+        self.backgroundColor = .white
+        self.layer.cornerRadius = self.bounds.height / 2
+        self.stackView.distribution = .fillEqually
+        self.addSubview(stackView)
+        putContraintsToStackView()
+        update()
     }
     
     public required init?(coder aDecoder: NSCoder) {
         fatalError("init coder not implemented")
     }
     
-    open func update(model: BottomNavModel) {
+    fileprivate func putContraintsToStackView() {
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.centerXAnchor.constraint(equalTo: self.centerXAnchor, constant: 0).isActive = true
+        stackView.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: 0).isActive = true
+        stackView.widthAnchor.constraint(equalToConstant: self.bounds.width - 30).isActive = true
+        stackView.heightAnchor.constraint(equalToConstant: self.bounds.height).isActive = true
+    }
+    
+    open func update() {
         cleanItems()
         populateStackView()
     }
@@ -54,18 +60,20 @@ open class BottomNav: UIView {
     fileprivate func populateStackView() {
         model.items.forEach { (image, title) in
             let item = makeItemView(title: title, image: image)
+            item.tintColor = .yellow
             stackView.addArrangedSubview(item)
             items.append(item)
         }
     }
     
     fileprivate func makeItemView(title: String, image: UIImage) -> ItemView {
-        let itemView = ItemView(frame: itemViewFrame, title: title, image: image)
+        let itemView = ItemView(title: title, image: image)
         itemView.color = self.mainColor
         itemView.delegate = self
+        itemView.heightAnchor.constraint(equalToConstant: self.bounds.height).isActive = true
         return itemView
     }
-    
+
 }
 
 extension BottomNav: ItemViewDelegate {

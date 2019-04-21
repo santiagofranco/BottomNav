@@ -8,10 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		2FEC518B226903E0005654D3 /* BottomNav.h in Headers */ = {isa = PBXBuildFile; fileRef = 2FEC5189226903E0005654D3 /* BottomNav.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2FEC519222690402005654D3 /* BottomNav.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2FEC519122690402005654D3 /* BottomNav.xib */; };
 		2FEC51942269044B005654D3 /* BottomNav.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FEC51932269044B005654D3 /* BottomNav.swift */; };
 		2FEC519622690523005654D3 /* BottomNavModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FEC519522690523005654D3 /* BottomNavModel.swift */; };
-		2FEC51982269074E005654D3 /* ItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2FEC51972269074E005654D3 /* ItemView.xib */; };
 		2FEC519A2269075D005654D3 /* ItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FEC51992269075D005654D3 /* ItemView.swift */; };
 		2FEC519C22690DDF005654D3 /* BottomNavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FEC519B22690DDF005654D3 /* BottomNavViewController.swift */; };
 		2FEC519E22690FB3005654D3 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FEC519D22690FB3005654D3 /* Extensions.swift */; };
@@ -21,10 +19,8 @@
 		2FEC5186226903E0005654D3 /* BottomNav.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BottomNav.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FEC5189226903E0005654D3 /* BottomNav.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BottomNav.h; sourceTree = "<group>"; };
 		2FEC518A226903E0005654D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2FEC519122690402005654D3 /* BottomNav.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BottomNav.xib; sourceTree = "<group>"; };
 		2FEC51932269044B005654D3 /* BottomNav.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomNav.swift; sourceTree = "<group>"; };
 		2FEC519522690523005654D3 /* BottomNavModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomNavModel.swift; sourceTree = "<group>"; };
-		2FEC51972269074E005654D3 /* ItemView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemView.xib; sourceTree = "<group>"; };
 		2FEC51992269075D005654D3 /* ItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemView.swift; sourceTree = "<group>"; };
 		2FEC519B22690DDF005654D3 /* BottomNavViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomNavViewController.swift; sourceTree = "<group>"; };
 		2FEC519D22690FB3005654D3 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -62,10 +58,8 @@
 			children = (
 				2FEC5189226903E0005654D3 /* BottomNav.h */,
 				2FEC518A226903E0005654D3 /* Info.plist */,
-				2FEC519122690402005654D3 /* BottomNav.xib */,
 				2FEC51932269044B005654D3 /* BottomNav.swift */,
 				2FEC519522690523005654D3 /* BottomNavModel.swift */,
-				2FEC51972269074E005654D3 /* ItemView.xib */,
 				2FEC51992269075D005654D3 /* ItemView.swift */,
 				2FEC519B22690DDF005654D3 /* BottomNavViewController.swift */,
 				2FEC519D22690FB3005654D3 /* Extensions.swift */,
@@ -116,7 +110,7 @@
 				TargetAttributes = {
 					2FEC5185226903E0005654D3 = {
 						CreatedOnToolsVersion = 10.1;
-						LastSwiftMigration = 1010;
+						LastSwiftMigration = 1020;
 					};
 				};
 			};
@@ -142,8 +136,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2FEC519222690402005654D3 /* BottomNav.xib in Resources */,
-				2FEC51982269074E005654D3 /* ItemView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -309,7 +301,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -335,7 +327,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.santifranco.BottomNav;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
