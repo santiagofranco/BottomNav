@@ -53,8 +53,6 @@ internal class ItemView: UIView {
         update()
     }
     
-    
-    
     fileprivate func update() {
         self.itemImage.image = self.image
         self.titleLabel.text = self.title

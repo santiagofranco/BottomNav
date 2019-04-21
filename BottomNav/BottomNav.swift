@@ -23,16 +23,27 @@ internal class BottomNav: UIView {
     
     fileprivate var items: [ItemView] = []
     
-    
     init(frame: CGRect, model: BottomNavModel) {
         self.model = model
         super.init(frame: frame)
         self.backgroundColor = .white
+
         self.layer.cornerRadius = self.bounds.height / 2
+        
+        configureShadow()
+        
         self.stackView.distribution = .fillEqually
         self.addSubview(stackView)
         putContraintsToStackView()
         update()
+    }
+    
+    fileprivate func configureShadow() {
+        self.layer.shadowColor = UIColor.black.cgColor
+        self.layer.shadowOpacity = 0.5
+        self.layer.shadowOffset = CGSize.zero
+        self.layer.shadowRadius = 10
+        self.layer.shouldRasterize = true
     }
     
     public required init?(coder aDecoder: NSCoder) {
