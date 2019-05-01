@@ -1,0 +1,11 @@
+framework module BottomNav {
+  umbrella header "BottomNav.h"
+
+  export *
+  module * { export * }
+}
+
+module BottomNav.Swift {
+    header "BottomNav-Swift.h"
+    requires objc
+}
