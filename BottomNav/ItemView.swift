@@ -18,6 +18,7 @@ internal class ItemView: UIView {
     
     let itemImage: UIImageView = UIImageView()
     let titleLabel: UILabel = UILabel()
+    let selectedView: UIView = UIView(frame: CGRect(x: 0, y: 0, width: 3, height: 3))
     
     let title: String
     let image: UIImage
@@ -29,6 +30,7 @@ internal class ItemView: UIView {
         didSet {
             titleLabel.tintColor = self.isSelected ? self.tintColor : self.color
             itemImage.tintColor = self.isSelected ? self.tintColor : self.color
+            selectedView.isHidden = !self.isSelected
         }
     }
     
@@ -45,9 +47,13 @@ internal class ItemView: UIView {
         
         titleLabel.textAlignment = .center
         titleLabel.font = .systemFont(ofSize: 12)
+        selectedView.backgroundColor = .black
+        selectedView.isHidden = true
+        selectedView.layer.cornerRadius = selectedView.bounds.height / 2
         
         self.addSubview(itemImage)
         if !title.isEmpty { self.addSubview(titleLabel) }
+        self.addSubview(selectedView)
         
         putConstraints()
         update()
@@ -65,6 +71,7 @@ internal class ItemView: UIView {
     fileprivate func putConstraints() {
         putImageConstraints()
         putTitleLabelConstraints()
+        putSelectedViewConstraints()
     }
     
     fileprivate func putImageConstraints() {
@@ -86,8 +93,17 @@ internal class ItemView: UIView {
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.widthAnchor.constraint(equalToConstant: 40).isActive = true
         titleLabel.heightAnchor.constraint(equalToConstant: 25).isActive = true
-        titleLabel.topAnchor.constraint(equalTo: self.centerYAnchor, constant: 2).isActive = true
+        titleLabel.topAnchor.constraint(equalTo: itemImage.bottomAnchor, constant: -2).isActive = true
         titleLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor, constant: 0).isActive = true
+    }
+    
+    fileprivate func putSelectedViewConstraints() {
+        
+        selectedView.translatesAutoresizingMaskIntoConstraints = false
+        selectedView.widthAnchor.constraint(equalToConstant: 3).isActive = true
+        selectedView.heightAnchor.constraint(equalToConstant: 3).isActive = true
+        selectedView.centerXAnchor.constraint(equalTo: itemImage.centerXAnchor, constant: 0).isActive = true
+        selectedView.centerYAnchor.constraint(equalTo: self.bottomAnchor, constant: -10).isActive = true
     }
     
     @objc

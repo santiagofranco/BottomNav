@@ -75,6 +75,7 @@ internal class BottomNav: UIView {
             stackView.addArrangedSubview(item)
             items.append(item)
         }
+        items[safe: 0]?.isSelected = true
     }
     
     fileprivate func makeItemView(title: String, image: UIImage) -> ItemView {
@@ -93,8 +94,9 @@ extension BottomNav: ItemViewDelegate {
             return item == itemView
         }) else { return }
         
-        items.forEach {
-            itemView.isSelected = $0 == itemView
+        itemView.isSelected = true
+        for item in items where item != itemView {
+            item.isSelected = false
         }
         self.delegate?.didTapItem(at: index)
     }

@@ -55,7 +55,7 @@ open class BottomNavViewController: UIViewController {
     
     fileprivate func putConstraints(to bottomNav: BottomNav) {
         bottomNav.translatesAutoresizingMaskIntoConstraints = false
-        bottomNav.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant:0).isActive = true
+        bottomNav.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant:-10).isActive = true
         bottomNav.heightAnchor.constraint(equalToConstant: 64).isActive = true
         bottomNav.widthAnchor.constraint(equalToConstant: self.view.bounds.width - 40).isActive = true
         bottomNav.centerXAnchor.constraint(equalTo: self.view.centerXAnchor, constant: 0).isActive = true
